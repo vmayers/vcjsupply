@@ -1,0 +1,39 @@
+<%= simple_form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :login_name %><br />
+    <%= f.input :login_name %>
+  </div>
+  <div class="field">
+    <%= f.label :hashed_password %><br />
+    <%= f.input :hashed_password %>
+  </div>
+  <div class="field">
+    <%= f.label :salt %><br />
+    <%= f.text_field :salt %>
+  </div>
+  <div class="field">
+    <%= f.label :administrator %><br />
+    <%= f.input :administrator %>
+  </div>
+  <div class="field">
+    <%= f.input :phone_number, :pattern => "[0-9]" %>
+  </div>
+  <div class="field">
+    <%= f.input :email, :placeholder => 'user@domain.com' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
