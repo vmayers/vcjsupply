@@ -1,4 +1,10 @@
 Vcjsupply::Application.routes.draw do
+  resources :products
+
+  resources :manufacturers
+
+  resources :product_categories
+
   resources :users
   
   root :to => "home#index"

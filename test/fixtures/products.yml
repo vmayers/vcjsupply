@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  number: MyString
+  description: MyString
+  product_category_id: 1
+  active: false
+  user_id: 1
+
+two:
+  number: MyString
+  description: MyString
+  product_category_id: 1
+  active: false
+  user_id: 1

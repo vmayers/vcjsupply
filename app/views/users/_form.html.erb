@@ -10,30 +10,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :login_name %><br />
-    <%= f.input :login_name %>
-  </div>
-  <div class="field">
-    <%= f.label :hashed_password %><br />
-    <%= f.input :hashed_password %>
-  </div>
-  <div class="field">
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
-  </div>
-  <div class="field">
-    <%= f.label :administrator %><br />
-    <%= f.input :administrator %>
-  </div>
-  <div class="field">
-    <%= f.input :phone_number, :pattern => "[0-9]" %>
-  </div>
-  <div class="field">
-    <%= f.input :email, :placeholder => 'user@domain.com' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
+	<%= f.input :name %>
+	<%= f.input :login_name %>
+	<%= f.input :password %>
+	<%= f.input :password_confirmation %>
+	<%= f.input :administrator %>
+	<%= f.button :submit %>
+	
 <% end %>

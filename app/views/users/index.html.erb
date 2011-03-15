@@ -2,24 +2,21 @@
 
 <table>
   <tr>
+		<th>Name</th>
     <th>Login name</th>
-    <th>Hashed password</th>
-    <th>Salt</th>
     <th>Administrator</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
+		<td><%= user.name %></td>
     <td><%= user.login_name %></td>
-    <td><%= user.hashed_password %></td>
-    <td><%= user.salt %></td>
     <td><%= user.administrator %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+			<%= link_to 'Edit', edit_user_path(user) %> |
+    	<%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+		</td>
   </tr>
 <% end %>
 </table>

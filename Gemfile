@@ -9,7 +9,8 @@ gem 'awesome_print', :require => 'ap'
 gem 'heroku'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'mysql', '2.8.1'
-gem 'simple_form'
+gem 'simple_form', '1.3.1'
+gem 'paperclip', '2.3.8'
 
 # Use unicorn as the web server
 # gem 'unicorn'
