@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Vcjsupply</title>
   <%= stylesheet_link_tag "vcjsupply" %>
-  <%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag "prototype", "rails" %>
+	<%= stylesheet_link_tag "jquery.lightbox-0.5" %>
+	<%= javascript_include_tag "jquery", "jquery.lightbox-0.5",  %>
   <%= csrf_meta_tag %>
+
+	<script>
+	$(function() {
+		$('#gallery a').lightBox(); // Select all links in the page
+		
+	});
+	</script>
 </head>
 
 <body>
+	<div id="login">
+		<% if current_user %>
+			Logged in as <%= current_user.login_name %>
+			<%= link_to "Logout", log_out_path %>
+		<% else %>
+			<%= link_to "Log in", log_in_path %>
+		<% end %>
+	</div>
 	<div id="header">
 	</div>
 	
 	<div id="nav">
 		<ul>
 			<li><a href="#">Home</a></li>
-			<li><a href="#">Products</a></li>
+			<li><%= link_to "Products", products_path %></li>
 			<li><a href="#">Contact Us</a></li>
 			<li><a href="#">About</a></li>
 		</ul>
@@ -27,7 +43,11 @@
 	<div id="content">
 		<div id="mainContent">
 			<div>
-				
+				<br />
+				<br />
+				<% flash.each do |name, msg| %>
+					<%=	content_tag :div, msg, :id => "flash_#{name}" %>
+				<% end %>
 				<!-- This is the main body -->
 				<%= yield %>
 			</div>

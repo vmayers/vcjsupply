@@ -9,12 +9,14 @@
   <b>Description:</b>
   <%= @product.description %>
 </p>
-
+<p>
+	<b>Manufacturer</b>
+	<%= @product.manufacturer.name if @product.manufacturer %>
+</p>
 <p>
   <b>Product category:</b>
-  <%= @product.product_category_id %>
+  <%= @product.product_category.description if @product.product_category %>
 </p>
-
 <p>
   <b>Active:</b>
   <%= @product.active %>

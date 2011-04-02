@@ -35,8 +35,13 @@ p {
 	padding-bottom: 22px;
 }
 
+#login{
+	text-align: right;
+	background-color: rgb(100, 149, 190);
+}
+
 #header{
-	margin-top: 20px;
+	margin-top: 0px;
 	padding: 60px;
 	background: url("/images/banner.png");
 }
@@ -182,5 +187,4 @@ p {
   font-size: 12px;
   list-style: square;
 }
-
 

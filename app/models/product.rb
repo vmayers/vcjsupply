@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   #Associations
   belongs_to(:product_category)
+  belongs_to(:manufacturer)
   
   #Paperclip
   has_attached_file :photo,

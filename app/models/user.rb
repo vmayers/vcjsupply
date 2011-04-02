@@ -1,47 +1,27 @@
-require 'digest/sha1'
-
 class User < ActiveRecord::Base
+  attr_accessible :login_name, :password, :password_confirmation
+  attr_accessor :password
+  
+  before_save :encrypt_password
+  
   validates :login_name, :presence => true, :uniqueness => true
-  
-  
-  attr_accessor :password_confirmation, :password
   validates_confirmation_of :password
-  validate :password_non_blank
+  validates_presence_of :password, :on => :create, :message => "Can't be blank"
   
-  public 
-    def password
-      @password
-    end 
+  def self.authenticate(login_name, password)
+    user = find_by_login_name(login_name)
     
-    def password=(pwd)
-      @password = pwd
-      return if pwd.blank?
-      create_new_salt()
-      self.hashed_password = User.encrypted_password(self.password, self.salt)
+    if user && user.hashed_password = BCrypt::Engine.hash_secret(password, user.salt) 
+      user
+    else
+      nil
     end
-    
-    def self.authenticate(login_name, password)
-      user = self.where(["login_name = ?", login_name]).first
-      if user 
-        expected_password = encrypted_password(password, user.salt)
-        if user.hashed_password != expected_password
-          user = nil
-        end
-      end 
-      return user
+  end
+  
+  def encrypt_password
+    if password.present?
+      self.salt = BCrypt::Engine.generate_salt
+      self.hashed_password = BCrypt::Engine.hash_secret(password, self.salt)
     end
-    
-    private 
-      def password_non_blank
-        errors.add(:password, "Missing password") if hashed_password.blank?
-      end
-      
-      def self.encrypted_password(password, salt)
-        string_to_hash = password + "1QK6745!!&990623" + salt
-        Digest::SHA1.hexdigest(string_to_hash)
-      end
-      
-      def create_new_salt
-        self.salt = self.object_id.to_s + rand.to_s
-      end
+  end
 end
