@@ -1,7 +1,7 @@
 class CreateProductCategories < ActiveRecord::Migration
   def self.up
     create_table :product_categories do |t|
-      t.string :description
+      t.string :name
 
       t.timestamps
     end

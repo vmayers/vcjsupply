@@ -132,7 +132,7 @@
 			$('#jquery-overlay').css({
 				backgroundColor:	settings.overlayBgColor,
 				opacity:			settings.overlayOpacity,
-				width:				arrPageSizes[0],
+				width:				arrPageSizes[2],
 				height:				arrPageSizes[1]
 			}).fadeIn();
 			// Get page scroll
@@ -229,7 +229,8 @@
 			$('#lightbox-loading').hide();
 			$('#lightbox-image').fadeIn(function() {
 				_show_image_data();
-				_set_navigation();
+				//we want to only show one image at a time
+				//_set_navigation();
 			});
 			_preload_neighbor_images();
 		};
@@ -243,10 +244,12 @@
 			if ( settings.imageArray[settings.activeImage][1] ) {
 				$('#lightbox-image-details-caption').html(settings.imageArray[settings.activeImage][1]).show();
 			}
+			/*
 			// If we have a image set, display 'Image X of X'
 			if ( settings.imageArray.length > 1 ) {
 				$('#lightbox-image-details-currentNumber').html(settings.txtImage + ' ' + ( settings.activeImage + 1 ) + ' ' + settings.txtOf + ' ' + settings.imageArray.length).show();
-			}		
+			}	
+			*/	
 		}
 		/**
 		 * Display the button navigations

@@ -5,24 +5,25 @@
 <table>
   <tr>
 		<th></th>
-    <th>Number</th>
-    <th>Description</th>
-    <th>Product category</th>
-    <th>Active</th>
-    <th>User</th>
+    <th><%= sortable "number" %></th>
+    <th><%= sortable "description" %></th>
+    <th><%= sortable "product_category_id", "Product Category" %></th>
+		<th><%= sortable "manufacturer_id", "Manufacturer" %></th>
+    <th><%= sortable "active" %></th>
     <th></th>
   </tr>
 
 
 	<% @products.each do |product| %>
-	  <tr>
+	  <tr class="<%= cycle('line-odd', 'line-even') %>">
 			<td><div id="gallery"><%= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description %></div></th> 
 	    <td><%= product.number %></td>
-	    <td><%= product.description %></td>
-	    <td><%= product.product_category.description %></td>
+	    <td class="product-description"><%= product.description %></td>
+	    <td><%= product.product_category.name %></td>
+	    <td><%= product.manufacturer.name %></td>	
 	    <td><%= product.active %></td>
-			<% if current_user.administrator %>
-	   	 <td><%= link_to 'Show', product %> |
+			<% if current_user and current_user.administrator %>
+	   	 <td class="item-action"><%= link_to 'Show', product %> |
 					<%= link_to 'Edit', edit_product_path(product) %> |
 					<%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %>
 				</td>
@@ -30,6 +31,8 @@
 	  </tr>
 	<% end %>
 </table>
+
+
 
 <br />
 

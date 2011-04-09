@@ -1,6 +1,9 @@
 class ProductCategoriesController < ApplicationController
   # GET /product_categories
   # GET /product_categories.xml
+  
+  before_filter :authorize
+  
   def index
     @product_categories = ProductCategory.all
 

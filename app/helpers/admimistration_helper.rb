@@ -1,0 +1,2 @@
+module AdmimistrationHelper
+end

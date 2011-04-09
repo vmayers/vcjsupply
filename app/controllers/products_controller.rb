@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
+  
+  before_filter :authorize, :except => [:index]
+  
+  helper_method :sort_column, :sort_direction
+  
   def index
-    @products = Product.all
+    @products = Product.order(sort_column + " " + sort_direction) #.paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +84,15 @@ class ProductsController < ApplicationController
       format.html { redirect_to(products_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private 
+  
+  def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "description"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

@@ -1,6 +1,9 @@
 class ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.xml
+  
+  before_filter :authorize
+  
   def index
     @manufacturers = Manufacturer.all
 

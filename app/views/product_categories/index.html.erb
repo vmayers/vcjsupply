@@ -2,14 +2,14 @@
 
 <table>
   <tr>
-    <th>Description</th>
+    <th>Name</th>
     <th></th>
   </tr>
 
 <% @product_categories.each do |product_category| %>
   <tr>
-    <td><%= product_category.description %></td>
-    <td>
+    <td class="ref-data-name"><%= product_category.name %></td>
+    <td class="item-action">
 			<%= link_to 'Edit', edit_product_category_path(product_category) %>&nbsp; |
 			&nbsp;<%= link_to 'Destroy', product_category, :confirm => 'Are you sure?', :method => :delete %>
 		</td>
