@@ -14,6 +14,7 @@ gem 'paperclip', '2.3.8'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'meta_search'
 gem 'will_paginate', '3.0.pre2'
+gem 'aws-s3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

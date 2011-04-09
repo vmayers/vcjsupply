@@ -30,6 +30,10 @@ GEM
     activesupport (3.0.4)
     arel (2.0.9)
     awesome_print (0.3.2)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     configuration (1.2.0)
@@ -90,12 +94,14 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.15)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesome_print
+  aws-s3
   bcrypt-ruby
   heroku
   jquery-rails (>= 0.2.6)
