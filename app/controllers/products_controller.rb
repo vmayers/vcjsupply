@@ -30,6 +30,9 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    
+    #Default product to active
+    @product.active = true
 
     respond_to do |format|
       format.html # new.html.erb

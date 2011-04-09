@@ -1,5 +1,3 @@
-
-
 <h1>Listing products</h1>
 
 <table>
@@ -9,7 +7,6 @@
     <th><%= sortable "description" %></th>
     <th><%= sortable "product_category_id", "Product Category" %></th>
 		<th><%= sortable "manufacturer_id", "Manufacturer" %></th>
-    <th><%= sortable "active" %></th>
     <th></th>
   </tr>
 
@@ -21,7 +18,6 @@
 	    <td class="product-description"><%= product.description %></td>
 	    <td><%= product.product_category.name %></td>
 	    <td><%= product.manufacturer.name %></td>	
-	    <td><%= product.active %></td>
 			<% if current_user and current_user.administrator %>
 	   	 <td class="item-action"><%= link_to 'Show', product %> |
 					<%= link_to 'Edit', edit_product_path(product) %> |
@@ -36,4 +32,6 @@
 
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+<% if administrator_user %>
+	<%= link_to 'New Product', new_product_path %>
+<% end %>
