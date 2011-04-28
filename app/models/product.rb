@@ -14,4 +14,14 @@ class Product < ActiveRecord::Base
     :path => "/:style/:id/:filename"
     
   validates_presence_of :number
+  
+  def self.search(search)
+    if search
+      # Check out Shinx to set up a full search engine 
+      where('number LIKE ?', "%#{search}%")
+    else
+      #Like calling All but doesn't perform the actual query
+      scoped
+    end
+  end
 end

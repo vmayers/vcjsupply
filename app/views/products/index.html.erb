@@ -1,5 +1,15 @@
 <h1>Listing products</h1>
 
+<%= form_tag products_path, :method => 'get' do %>
+	<%= hidden_field_tag :direction, params[:direction] %>
+	<%= hidden_field_tag :sort, params[:sort] %>
+	<p>
+		<%= label_tag "Product Number: "%>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	</p>
+<% end %>
+
 <table>
   <tr>
 		<th></th>
@@ -13,7 +23,12 @@
 
 	<% @products.each do |product| %>
 	  <tr class="<%= cycle('line-odd', 'line-even') %>">
-			<td><div id="gallery"><%= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description %></div></th> 
+			<% if product.photo_file_name %>
+				<td><div id="gallery"><%= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description %></div>
+				</td>
+			<% else %>
+				<td><%= image_tag "no_image.jpg" %>
+			<% end %> 
 	    <td><%= product.number %></td>
 	    <td class="product-description"><%= product.description %></td>
 	    <td><%= product.product_category.name %></td>
@@ -28,8 +43,7 @@
 	<% end %>
 </table>
 
-
-
+<%= will_paginate @products %>
 <br />
 
 <% if administrator_user %>
