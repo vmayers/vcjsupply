@@ -50,6 +50,7 @@ p {
 	margin: 0 auto;
 	position: absolute;
 	background: black url("/images/titlebar.png");
+	text-align: center;
 }
 
 #nav ul{
@@ -68,7 +69,6 @@ p {
 	width: 140px;
 	font-size: 14px;
 	line-height: 44px;
-	text-align: center;
 	text-decoration: none;
 	color: #777;
 }

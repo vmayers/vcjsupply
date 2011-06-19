@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'meta_search'
 gem 'will_paginate', '3.0.pre2'
 gem 'aws-s3'
+gem 'tiny_mce', '0.1.4'
 
 # Use unicorn as the web server
 # gem 'unicorn'

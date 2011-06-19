@@ -7,8 +7,9 @@ class ProductsController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-    @products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
-
+    #@products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @products = Product.joins('LEFT OUTER JOIN manufacturers ON manufacturers.id = products.manufacturer_id
+                               LEFT OUTER JOIN product_categories ON product_categories.id = products.product_category_id').search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -92,10 +93,17 @@ class ProductsController < ApplicationController
   private 
   
   def sort_column
-    Product.column_names.include?(params[:sort]) ? params[:sort] : "number"
+    if params[:sort] == 'manufacturers.name' or params[:sort] == 'category'
+      return params[:sort]
+    else
+  
+      return Product.column_names.include?(params[:sort]) ? params[:sort] : "number"
+       
+    end
   end
   
   def sort_direction
+    puts "Sort Direction ----------------------------------------------> #{%w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'}"
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

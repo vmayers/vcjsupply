@@ -1,4 +1,6 @@
 Vcjsupply::Application.routes.draw do
+  
+
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "administration" => "administration#index", :as => "administration"
@@ -9,7 +11,18 @@ Vcjsupply::Application.routes.draw do
   resources :users
   resources :sessions
   resources :administration
+  resources :static_page_contents do
+    collection do
+      get :show_about
+      get :show_contact
+      get :edit_about
+      get :edit_contact
+    end
+  end
   
+  match "/about_us" => "static_page_contents#show_about", :as => :about
+  match "/contact_us" => "static_page_contents#show_contact", :as => :contact
+   
   root :to => "home#index"
 
   # The priority is based upon order of creation:

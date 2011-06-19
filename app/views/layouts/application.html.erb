@@ -16,6 +16,7 @@
 	});
 	</script>
 </head>
+<%= include_tiny_mce_if_needed %>
 
 <body>
 	<div id="login">
@@ -33,8 +34,8 @@
 		<ul>
 			<li><a href="#">Home</a></li>
 			<li><%= link_to "Products", products_path %></li>
-			<li><a href="#">Contact Us</a></li>
-			<li><a href="#">About</a></li>
+			<li><%= link_to "Contact Us", contact_path %></li>
+			<li><%= link_to "About Us", about_path %></li>
 			<% if administrator_user %>
 				<li><%= link_to "Administration", administration_path %></li>
 			<% end %>
