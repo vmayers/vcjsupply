@@ -5,7 +5,7 @@
 }
 
 html {
-	background-color: rgb(100, 149, 190);
+	background-color: black;
 }
 
 #header, #footer, #aside, #nav, #article, #intro{
@@ -37,7 +37,19 @@ p {
 
 #login{
 	text-align: right;
-	background-color: rgb(100, 149, 190);
+	/*background-color: rgb(100, 149, 190);*/
+	background-color: black;
+	color: #777;
+}
+
+#login a:hover {
+	/* color: #fff; */
+	color: #fff;
+}
+
+#login a{
+	/* color: #fff; */
+	color: #fff;
 }
 
 #header{
@@ -70,15 +82,17 @@ p {
 	font-size: 14px;
 	line-height: 44px;
 	text-decoration: none;
-	color: #777;
+	color: #fff;
 }
 
 #nav ul li a:hover {
-	color: #fff;
+	/* color: #fff; */
+	color: #777;
 }
 
 #nav ul li.selected a{
-	color: #fff;
+	/* color: #fff; */
+	color: #777;
 }
 
 #intro {
