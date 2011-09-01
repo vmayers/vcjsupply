@@ -17,6 +17,7 @@
     <th><%= sortable "description" %></th>
     <th><%= sortable "category", "Product Category" %></th>
 		<th><%= sortable "manufacturers.name", "Manufacturer" %></th>
+		<th><%= sortable "price", "Price" %></th>		
     <th></th>
   </tr>
 
@@ -27,12 +28,13 @@
 				<td><div id="gallery"><%= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description %></div>
 				</td>
 			<% else %>
-				<td><%= image_tag "no_image.jpg" %>
+				<td></td>
 			<% end %> 
 	    <td><%= product.number %></td>
 	    <td class="product-description"><%= product.description %></td>
 	    <td><%= product.product_category.name %></td>
 	    <td><%= product.manufacturer.name %></td>	
+	    <td><%= number_to_currency(product.price) %></td>		
 			<% if current_user and current_user.administrator %>
 	   	 <td class="item-action"><%= link_to 'Show', product %> |
 					<%= link_to 'Edit', edit_product_path(product) %> |
