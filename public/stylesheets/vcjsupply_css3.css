@@ -4,6 +4,10 @@
 	padding: 0;
 }
 
+html {
+	background-color: black;
+}
+
 header, footer, aside, nav, article{
 	display: block;	
 }
@@ -31,22 +35,37 @@ p {
 	padding-bottom: 22px;
 }
 
+#login{
+	text-align: right;
+	/*background-color: rgb(100, 149, 190);*/
+	background-color: black;
+	color: #777;
+}
+
+#login a:hover {
+	/* color: #fff; */
+	color: #fff;
+}
+
+#login a{
+	/* color: #fff; */
+	color: #fff;
+}
+
 header{
-	margin: 0 auto;
-	width: 940px;
-	background: blue url("nav_background");
+	margin-top: 0px;
+	padding: 50px;
+	background: url("/images/banner.png");
 }
 
 nav {
 	position: absolute;
-	left: 0;
-	width: 100%;
-	background: url("nav_background");
+	width: 940px;
+	background: black url("/images/titlebar.png");
 }
 
 nav ul{
 	margin: 0 auto;
-	width: 940px;
 	list-style: none;
 }
 
@@ -62,15 +81,17 @@ nav ul li a {
 	line-height: 44px;
 	text-align: center;
 	text-decoration: none;
-	color: #777;
+	color: #fff;
 }
 
 nav ul li a:hover {
-	color: #fff;
+	/* color: #fff; */
+	color: #777;
 }
 
 nav ul li.selected a{
-	color: #fff;
+	/* color: #fff; */
+	color: #777;
 }
 
 #intro {
@@ -88,33 +109,149 @@ nav ul li.selected a{
 	-webkit-border-radius: 22px;
 }
 
-#intro h2, #intro p¬†{  
+intro h2, #intro p¬†{  
     width: 336px;  
 }  
   
-#intro h2 {  
+intro h2 {  
     padding: 0 0 22px 0;  
     font-weight: normal  
     color: #fff;  
 }  
   
-#intro p {  
+intro p {  
     padding: 0;  
     color: #d9f499;  
 }  
 
  #content {  
  	display: table;  
+ 	padding-top: 40px;
  }  
    
 #mainContent {  
 	display: table-cell;  
-  width: 620px;  
+  width: 620px;
   padding-right: 22px;  
 }  
- 
+
+#mainContent input{
+	margin: 3px; 
+} 
+
 aside {  
     display: table-cell;  
     width: 300px;  
+		padding-left: 10px;
 }
 
+aside ul{
+	list-style: none;
+}
+
+footer{
+	background-color: rgb(100, 149, 190);
+	color: #666666;
+}
+
+.simple_form label{
+	float: left;
+	width: 100px;
+	text-align: right;
+	margin: 2px 10px;
+}
+
+.simple_form div.input{
+	margin-bottom: 10px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit']{
+	margin-left: 120px;
+}
+
+.simple_form div.boolean label {
+	float: none;
+	margin: 0;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.vcjsupply table{
+	border-collapse: collapse;
+	width: 101%;
+}
+
+.vcjsupply table th{
+	text-align: left;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.vcjsupply table tr td{
+	padding: 5px;
+	vertical-align: top;
+}
+
+
+.vcjsupply th .asc{	background-image: url(/images/up_arrow.gif);
+}
+
+.vcjsupply th .desc{
+	background-image: url(/images/down_arrow.gif);
+}
+
+.vcjsupply .product-description{
+	width: 30%;
+}
+
+.vcjsupply .ref-data-name{
+	width: 90%;
+}
+
+.vcjsupply .item-action{
+	font-size: x-small;
+	text-align: left;
+	padding-right: 1em;
+	color: blue;
+}
+
+.vcjsupply .line-odd{
+	background: #f0f0f0;
+}
+
+.vcjsupply .line-even{
+	background: silver;
+}

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :administrator_user
+  helper_method :manufacturers
+  helper_method :product_categories
   
   protected
     
@@ -26,5 +28,13 @@ class ApplicationController < ActionController::Base
       else
         false 
       end
+    end
+    
+    def manufacturers
+      Manufacturer.all
+    end
+    
+    def product_categories
+      ProductCategory.all
     end
 end

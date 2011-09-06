@@ -3,7 +3,7 @@
 <head>
 
   <title>Vcjsupply</title>
-  <%= stylesheet_link_tag "vcjsupply" %>
+  <%= stylesheet_link_tag "vcjsupply_css3" %>
 	<%= stylesheet_link_tag "jquery.lightbox-0.5" %>
 	<%= javascript_include_tag :defaults  %>
 	<%= javascript_include_tag "jquery", "jquery.lightbox-0.5"  %>
@@ -27,10 +27,10 @@
 			<%= link_to "Log in", log_in_path %>
 		<% end %>
 	</div>
-	<div id="header">
-	</div>
-	
-	<div id="nav">
+	<header>
+		<br />
+	</header>
+	<nav>
 		<ul>
 			<li><a href="#">Home</a></li>
 			<li><%= link_to "Products", products_path %></li>
@@ -40,34 +40,45 @@
 				<li><%= link_to "Administration", administration_path %></li>
 			<% end %>
 		</ul>
-	</div>
+	
+	</nav>
 	
 	<!-- <div id="intro">
 	</div> -->
 	
-	<div id="content">
-		<div id="mainContent">
-			<div>
-				<br />
-				<br />
-				<% flash.each do |name, msg| %>
-					<%=	content_tag :div, msg, :id => "flash_#{name}" %>
+	<section id="content">
+		<aside>
+			<h3>Manufacturers</h3>
+			<ul>
+				<% manufacturers.each do |m| %>
+					<li><%= m.name %> </li>
 				<% end %>
-				<div class="vcjsupply">
-					<!-- This is the main body -->
-					<%= yield %>
-				</div>
+			</ul>
+			
+			<h3>Category</h3>
+			<ul>
+				<% product_categories.each do |c| %>
+					<li><%= c.name %> </li>
+				<% end %>
+			</ul>
+		</aside>
+		<section id="mainContent">
+
+			<% flash.each do |name, msg| %>
+				<%=	content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+			<div class="vcjsupply">
+				<!-- This is the main body -->
+				<%= yield %>
 			</div>
-		</div>
-	
-		<!--<div id="aside">
-		</div> -->
-	</div>
-	
-	<div id="footer">
+		</section>
+		
+		
+	</section>	
+	<footer>
 		<!-- Footer -- >
 		©2010-2011 VCJ Supply
-	</div>
+	</footer>
 
 </body>
 </html>
