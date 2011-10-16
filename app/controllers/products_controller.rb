@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   def index
     #@products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @products = Product.joins('LEFT OUTER JOIN manufacturers ON manufacturers.id = products.manufacturer_id
-                               LEFT OUTER JOIN product_categories ON product_categories.id = products.product_category_id').search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+                               LEFT OUTER JOIN product_categories ON product_categories.id = products.product_category_id').order("manufacturers.name, product_categories.name").search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }

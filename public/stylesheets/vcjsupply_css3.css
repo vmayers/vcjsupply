@@ -141,7 +141,7 @@ intro p {
 
 aside {  
     display: table-cell;  
-    width: 300px;  
+    width: 200px;  
 		padding-left: 10px;
 }
 

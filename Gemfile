@@ -6,16 +6,18 @@ gem 'rails', '3.0.4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'awesome_print', :require => 'ap'
+gem 'aws-s3'
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'haml'
 gem 'heroku'
 gem 'jquery-rails', '>= 0.2.6'
-gem 'mysql', '2.8.1'
-gem 'simple_form', '1.3.1'
-gem 'paperclip', '2.3.8'
-gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'meta_search'
-gem 'will_paginate', '3.0.pre2'
-gem 'aws-s3'
+gem 'mysql', '2.8.1'
+gem 'paperclip', '2.3.8'
+gem 'simple_form', '1.3.1'
 gem 'tiny_mce', '0.1.4'
+gem 'will_paginate', '3.0.pre2'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

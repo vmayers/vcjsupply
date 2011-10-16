@@ -1,0 +1,47 @@
+%h1 Listing products
+
+= form_tag products_path, :method => 'get' do 
+	= hidden_field_tag :direction, params[:direction] 
+	= hidden_field_tag :sort, params[:sort] 
+	%p
+		= label_tag "Product Number:"
+		= text_field_tag :search, params[:search]
+		= submit_tag "Search", :name => nil
+	
+	%table
+		%tr
+			%th
+			%th= sortable "number"
+			%th= sortable "description" 
+			%th= sortable "category", "Product Category" 
+			%th= sortable "manufacturers.name", "Manufacturer"
+			%th= sortable "price", "Price"
+			%th
+ 
+		- @products.each do |product| 
+			%tr{ :class => cycle( 'line-odd', 'line-even') }
+				- if product.photo_file_name
+					%td
+						%div#gallery= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description
+				- else 
+					%td
+				 
+				%td= product.number 
+				%td.product-description= product.description 
+				%td= product.product_category.name
+				%td= product.manufacturer.name
+				%td= number_to_currency(product.price)
+				- if current_user and current_user.administrator
+					%td.item-action
+						= link_to 'Show', product 
+						%br
+						= link_to 'Edit', edit_product_path(product) 
+						%br
+						= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
+
+	= will_paginate @products
+	%br
+
+	- if administrator_user
+		= link_to 'New Product', new_product_path 
+

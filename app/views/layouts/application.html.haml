@@ -1,0 +1,66 @@
+!!! 5
+%html
+	%head
+
+		%title Vcjsupply
+  	
+		= stylesheet_link_tag "vcjsupply_css3"
+		= stylesheet_link_tag "jquery.lightbox-0.5"
+		= javascript_include_tag :defaults  
+		= javascript_include_tag "jquery", "jquery.lightbox-0.5" 
+		= csrf_meta_tag 
+
+		:javascript
+			$(function() 
+			{
+				$('#gallery a').lightBox(); // Select all links in the page
+			});
+
+	- include_tiny_mce_if_needed 
+
+	%body
+		%div#login
+			- if current_user 
+				Logged in as 
+				= current_user.login_name
+				= link_to "Logout", log_out_path 
+			- else
+				= link_to "Log in", log_in_path
+
+		%header
+			%br
+		
+		%nav
+			%ul
+				%li= link_to "Home", root_path
+				%li= link_to "Products", products_path
+				%li= link_to "Contact Us", contact_path
+				%li= link_to "About Us", about_path
+				- if administrator_user
+					%li= link_to "Administration", administration_path
+				
+	
+		%section#content
+			%aside
+				%h3 Manufacturers
+				%ul
+					- manufacturers.each do |m|
+						%li= m.name
+			
+				%h3 Category
+				%ul
+					- product_categories.each do |c|
+						%li= c.name
+					
+			%section#mainContent
+
+				- flash.each do |name, msg|
+					=	content_tag :div, msg, :id => "flash_#{name}"
+				
+				%div.vcjsupply
+					-# This is the main body 
+					= yield 
+		%footer
+			©2010-2011 VCJ Supply
+	
+
