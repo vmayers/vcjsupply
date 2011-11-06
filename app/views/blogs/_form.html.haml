@@ -1,0 +1,23 @@
+= form_for(@blog) do |f| 
+	- if @blog.errors.any? 
+		%div.error_explanation
+			%h2= pluralize(@blog.errors.count, "error")
+			prohibited this blog from being saved:
+
+			%ul
+				- @blog.errors.full_messages.each do |msg| 
+					%li= msg 
+
+	%div#field
+		= f.label :title
+		%br
+		= f.text_field :title
+
+	%div#field
+		= f.label :message
+		%br 
+		= f.text_area :message, :class => "mceEditor", :size => '80x15'
+ 
+	%div#actions
+		= f.submit 
+ 

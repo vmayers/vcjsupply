@@ -1,0 +1,10 @@
+%aside
+	%h3 Manufacturers
+	%ul
+		- manufacturers.each do |m|
+			%li= m.name
+
+	%h3 Category
+	%ul
+		- product_categories.each do |c|
+			%li= c.name

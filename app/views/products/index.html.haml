@@ -18,6 +18,7 @@
 			%th= sortable "price", "Price"
 			%th
  
+		- @manufacturer = ''
 		- @products.each do |product| 
 			%tr{ :class => cycle( 'line-odd', 'line-even') }
 				- if product.photo_file_name
@@ -25,7 +26,7 @@
 						%div#gallery= link_to (image_tag product.photo.url(:thumb)), product.photo.url(), :title => product.description
 				- else 
 					%td
-				 
+				
 				%td= product.number 
 				%td.product-description= product.description 
 				%td= product.product_category.name

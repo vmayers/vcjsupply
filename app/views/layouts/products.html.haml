@@ -16,7 +16,7 @@
 				$('#gallery a').lightBox(); // Select all links in the page
 			});
 
-	= include_tiny_mce_if_needed 
+	- include_tiny_mce_if_needed 
 
 	%body
 		%div#login
@@ -41,7 +41,7 @@
 				
 	
 		%section#content
-					
+			= render("layouts/sidebar", object: manufacturers, object: product_categories)
 			%section#mainContent
 
 				- flash.each do |name, msg|
@@ -50,7 +50,6 @@
 				%div.vcjsupply
 					-# This is the main body 
 					= yield 
-		%footer
-			©2010-2011 VCJ Supply
+		= render ("layouts/footer")
 	
 

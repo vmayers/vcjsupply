@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :login_name, :password, :password_confirmation, :administrator
   attr_accessor :password
   
+  has_many(:blogs)
+  
   before_save :encrypt_password
   
   validates :login_name, :presence => true, :uniqueness => true

@@ -1,0 +1,6 @@
+= will_paginate @blogs
+- @blogs.each do |blog|
+	%h1=blog.title
+	= raw(blog.message)
+
+= will_paginate @blogs

@@ -1,0 +1,25 @@
+%h1	Listing Home Page blogs
+
+%table
+	%tr
+		%th Title
+		%th Message
+		%th User
+		%th 
+		%th
+		%th
+	- @blogs.each do |blog| 
+		%tr
+			%td= blog.title
+			%td= raw(blog.message)
+			%td= blog.user.login_name 
+			%td
+				= link_to 'Show', blog 
+				|
+				= link_to 'Edit', edit_blog_path(blog)
+				|
+				= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete 
+ 
+%br 
+
+= link_to 'New Blog', new_blog_path 
