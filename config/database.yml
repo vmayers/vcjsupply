@@ -11,8 +11,8 @@ development:
   reconnect: false
   database: vcjsupply_development
   pool: 5
-  username: root
-  password: malawi12
+  username: 
+  password: 
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -24,7 +24,7 @@ test:
   reconnect: false
   database: vcjsupply_test
   pool: 5
-  username: root
+  username: 
   password:
   socket: /tmp/mysql.sock
 
@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: vcjsupply_production
   pool: 5
-  username: root
+  username: 
   password:
   socket: /tmp/mysql.sock
